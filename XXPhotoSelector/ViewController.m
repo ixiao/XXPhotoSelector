@@ -7,8 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "XXPhotoSelector.h"
 
 @interface ViewController ()
+{
+    
+}
+//@property (nonatomic, strong) XXNavgationController * photo;
 
 @end
 
@@ -16,9 +21,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor blueColor];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(100, 300, 100, 30);
+    [btn setTitle:@"click" forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor redColor];
+    [btn addTarget:self action:@selector(momowo:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+//       [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:VC animated:YES completion:nil];
+    
 }
-
+- (void)momowo:(id)sender
+{
+    XXPhotosViewController * photo = [XXPhotosViewController new];
+    XXNavgationController * nav = [[XXNavgationController alloc]initWithRootViewController:photo ];
+    [self.navigationController presentViewController:nav animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
